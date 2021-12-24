@@ -1,0 +1,54 @@
+Here are some useful commands to setup your project environment.
+
+For Running project,
+
+1. In linux,
+    => in terminal,
+    1.  setup virtual environment,
+        " pip install virtualenv "
+        " virtualenv <name of env> (like "venv") "
+    
+    2. enter into virtualenv,
+        " source venv/bin/activate "
+    
+    3. install reuirements,
+        " pip install -r requirements.txt "
+
+    4. Do migrations to setup Database,
+        1. " falsk db init "
+        2. " flask db migrate -m 'first migration' " 
+        3. " flask db upgrade "
+
+        after this go to your terminal and write,
+        " pyhton "
+        
+        inside interpriter,
+        " from pet import db "
+        " from pet.models import Category "
+        " c1 = Category(name='Seller') "
+        " c2 = Category(name='Buyer') "
+        " db.session.add_all([c1,c2]) "
+        " db.session.commit() "
+
+        Done. press " ctrl + z " to exit from terminal.
+    
+    5. set your flask app in environment,
+        " export FLASK_APP='pet' " (make sure you put main "pet" directory inside one directory like I put.)
+        " export FLASK_DEBUG=1 " ( optional )
+    
+    6. run your app,
+        " flask run ".
+
+2. In Windows,
+
+    => step no. 1,3,4 and 6 are same.
+    => changes,
+    
+    2. enter into virtualenv,
+        " venv/Scripts/activate "
+    
+    4. set your flask app into environment,
+        " set FLASK_APP='pet' "
+        " set FLASK_DEBUG=1 "
+
+That's It.

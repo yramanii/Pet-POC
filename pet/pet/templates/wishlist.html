@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Wishlist page
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">Wishlist</h1><br>
+{% for choice in view_data %}
+<div class="container" style="border: 2px solid black; width: 12rem;">
+Pet Name: {{ choice.name }}<br>
+Pet Type: {{ choice.pet_type }}<br>
+Pet Age: {{ choice.age }}<br>
+Owner : {{ choice.user }}<br><br>
+</div>
+{% endfor %}
+
+{% endblock %}

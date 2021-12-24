@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align: center;">Welcome</h1><br>
+
+{% if current_user.is_authenticated %}
+
+{% for pet in pets %}
+<div class="pet_list">
+<input type="checkbox" id="{{pet.id}}" style="margin-left: 2rem; float: left;"><div class="container" style="border: 2px solid black; width: 12rem; margin-left: 5rem;">
+
+Pet Name: {{pet.name}}<br>
+Pet Type: {{pet.pet_type}}<br>
+Pet Age: {{pet.age}}<br>
+Owner: {{pet.user }}<br><br>
+
+</div>
+</div>
+{% endfor %}
+
+{% else %}
+
+{% for pet in pets %}
+<div class="container" style="border: 2px solid black; width: 12rem;">
+Pet Name: {{pet.name}}<br>
+Pet Type: {{pet.pet_type}}<br>
+Pet Age: {{pet.age}}<br>
+Owner: {{pet.user }}<br><br>
+</div>
+{% endfor %}
+{% endif %}
+
+
+{% endblock %}
+<!-- on load, one api will hit -->
+
+{% block scripts %}
+    <script>
+
+        $(".pet_list input[type=checkbox]").click(function(){
+            var id = $(this).attr("id");
+
+            $.ajax({
+                url: "/post/wishlist",
+                type: "post",
+                data: { data:id},
+                success: function(response){
+                    if(response){
+                        console.log("Done!");
+                    }else{
+                        console.log("There is some issue!");
+                    }
+                }
+            });
+
+        });
+
+        
+    </script>
+{% endblock %}
